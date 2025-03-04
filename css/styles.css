@@ -31,6 +31,25 @@ body {
     flex-grow: 1;
 }
 
+button {
+    background-color: #d1e6f3;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #003366;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #003366;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+
 /* Sidebar links */
 .sidebar nav ul li a {
     color: white;
@@ -219,6 +238,81 @@ a:hover {
 /* Section Padding */
 .card-section {
     margin-bottom: 40px;
+}
+
+.card-section .card i{
+
+    font-size: 1.5rem;
+
+}
+
+/* Styling for Position, Institution, and Email to align inline */
+.card-body p {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px; /* Space between the label and value */
+    align-items: center;
+}
+
+.card-body p strong {
+    margin-right: 10px; /* Space between the label and the value */
+}
+
+.card-body p strong {
+    margin-right: 10px; /* Space between the label and the value */
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Flex container for inline alignment */
+.info-item {
+    display: flex;
+    align-items: center;  /* Ensures the text and icon are vertically aligned */
+    margin-bottom: 10px;   /* Adds space between items */
+}
+
+/* Styling for the icon */
+.info-item i {
+    font-size: 1.5rem;  /* Icon size */
+    margin-right: 8px;   /* Space between the icon and the text */
+    vertical-align: middle;  /* Aligns the icon vertically with the text */
+}
+
+/* Label text */
+.info-item .label {
+    font-weight: bold;
+    margin-right: 5px;  /* Space between the label and value */
+}
+
+/* Value text */
+.info-item .value {
+    font-weight: normal;
+}
+
+.email-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.email-button {
+    background-color: #004080;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.email-button:hover {
+    background-color: #002855;
 }
 
 /* Footer Styling */
