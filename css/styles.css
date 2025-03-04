@@ -4,88 +4,145 @@
     padding: 0;
     box-sizing: border-box;
 }
-  
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #121212; /* Dark background */
     color: #f1f1f1; /* Light text color for contrast */
 }
-  
-h1,
-h2,
-h3 {
+
+h1, h2, h3 {
     color: #fafafa; /* Light color for headings */
 }
-  
-p,
-ul,
-li {
+
+p, ul, li {
     font-size: 1rem;
     line-height: 1.6;
     color: #dcdcdc; /* Lighter text for readability */
 }
-  
+
 a {
     text-decoration: none;
     color: inherit;
 }
-  
+
 /* Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px; /* Initially hide the sidebar off-screen */
     width: 250px;
     height: 100%;
     background-color: #1c1c1c; /* Dark sidebar */
     color: #f1f1f1; /* Light text color */
     padding: 30px;
+    transition: left 0.3s ease; /* Smooth transition for sliding in */
 }
 
-/*.sidebar.open {
-    display: block;
-}*/
-  
+/* Show sidebar on desktop view */
+@media (min-width: 1024px) {
+    .sidebar {
+        left: 0; /* Sidebar is visible by default on desktop */
+    }
+}
+
+/* Hide sidebar on mobile/tablet and allow toggling */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; /* Hide the sidebar off-screen */
+    }
+
+    .sidebar.show {
+        left: 0; /* Show the sidebar when 'show' class is added */
+    }
+}
+
+.sidebar.open {
+    left: 0; /* Show the sidebar when it has the 'open' class */
+}
+
+/* Close Button in Sidebar */
+.close-btn {
+    display: none; /* Hide the X button by default */
+}
+
+.sidebar.open .close-btn {
+    display: block; /* Show the X button when sidebar is open */
+}
+
 .sidebar h1 {
     font-size: 2rem;
     margin-bottom: 10px;
     color: #3498db; /* Accent color */
 }
-  
+
 .sidebar p {
     font-size: 1.1rem;
     margin-bottom: 30px;
 }
-  
+
 .sidebar nav ul {
     list-style: none;
 }
-  
+
 .sidebar nav ul li {
     margin: 15px 0;
 }
-  
+
 .sidebar nav ul li a {
     font-size: 1.1rem;
     display: flex;
     align-items: center;
     color: #f1f1f1; /* Light color for links */
 }
-  
+
 .sidebar nav ul li a:hover {
     color: #3498db; /* Accent color */
 }
-  
+
 .sidebar nav ul li a i {
     margin-right: 10px;
 }
-  
+
+/* Burger Menu */
+.burger-menu {
+    display: none; /* Hidden by default */
+    background-color: #1c1c1c; /* Dark background for burger menu */
+    padding: 10px;
+    color: #f1f1f1;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Close Button Styles */
+.close-btn {
+    position: absolute;
+    top: 20px; /* Adds space from the top */
+    right: 20px; /* Adds space from the right edge */
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: #f1f1f1;
+    cursor: pointer;
+    z-index: 2000; /* Ensure it's above the sidebar content */
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #e74c3c; /* Red color on hover for the X button */
+}
+
 /* Main Content */
 main {
-    margin-left: 270px;
+    margin-left: 270px; /* Adjusted margin to give space for sidebar */
     padding: 20px;
+    transition: margin-left 0.3s ease; /* Smooth transition when sidebar opens/closes */
 }
-  
+
+main.open {
+    margin-left: 0; /* When the sidebar is open, reset margin */
+}
+
 .card-section {
     background-color: #1e1e1e; /* Slightly lighter background for sections */
     margin: 20px 0;
@@ -93,18 +150,18 @@ main {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow */
 }
-  
+
 .card-section h2 {
     margin-bottom: 20px;
     color: #3498db; /* Accent color */
 }
-  
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-  
+
 .card {
     background-color: #2c2c2c; /* Darker card background */
     padding: 20px;
@@ -113,17 +170,17 @@ main {
     box-sizing: border-box;
     transition: transform 0.3s ease;
 }
-  
+
 .card:hover {
     transform: translateY(-5px);
 }
-  
+
 .card h3 {
     margin-bottom: 10px;
     font-size: 1.2rem;
     color: #fff; /* White text for card titles */
 }
-  
+
 .card p {
     margin-bottom: 10px;
     color: #dcdcdc; /* Lighter text for card details */
@@ -159,28 +216,23 @@ main {
     background-color: #7f8c8d; /* Gray for disabled state */
     cursor: not-allowed;
 }
-  
+
 /* Small Devices (Mobile) */
 @media (max-width: 768px) {
     .sidebar {
-        display: none;
-    }
-
-    .card {
-        width: 100%;
-    }
-
-    main {
-        margin-left: 0;
+        display: block; /* Display sidebar on mobile, but off-screen initially */
     }
 
     .burger-menu {
-        display: block;
-        background-color: #1c1c1c; /* Dark background for burger menu */
-        padding: 10px;
-        color: #f1f1f1;
-        font-size: 30px;
-        cursor: pointer;
+        display: block; /* Show burger menu on mobile */
+    }
+
+    .card {
+        width: 100%; /* Full width cards on mobile */
+    }
+
+    main {
+        margin-left: 0; /* Reset margin-left on mobile */
     }
 
     .button {
@@ -192,7 +244,11 @@ main {
 /* Larger Screens (Tablet and Up) */
 @media (min-width: 769px) {
     .sidebar {
-        display: block;
+        display: block; /* Show sidebar on larger screens */
+    }
+
+    .burger-menu {
+        display: none; /* Hide burger menu on larger screens */
     }
 
     .button {
@@ -200,21 +256,21 @@ main {
         padding: 12px 24px;
     }
 }
-  
+
 .card-header {
     font-size: 1.2rem;
     font-weight: bold;
     color: #3498db; /* Accent color */
 }
-  
+
 .info-item {
     margin-bottom: 8px;
 }
-  
+
 .email-container {
     margin-top: 15px;
 }
-  
+
 .email-button {
     background-color: #3498db; /* Accent color */
     color: white;
@@ -222,7 +278,7 @@ main {
     border-radius: 4px;
     font-weight: bold;
 }
-  
+
 .email-button:hover {
     background-color: #2980b9; /* Slightly darker accent color */
 }
