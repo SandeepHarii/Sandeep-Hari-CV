@@ -1,0 +1,30 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Website Repo
+        uses: actions/checkout@v3
+
+      - name: Checkout Private Repo
+        uses: actions/checkout@v3
+        with:
+          repository: SandeepHarii/Sandeep-Hari-CV
+          token: ${{ secrets.PAT_TOKEN }}
+          path: private-repo
+
+      # optional: add build step if you have a generator
+      # - name: Build Site
+      #   run: echo "No build step needed"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # if your HTML/CSS is in root, or point to _site, dist, etc.
