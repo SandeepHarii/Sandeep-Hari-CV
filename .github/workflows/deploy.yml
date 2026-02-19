@@ -26,5 +26,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # if your HTML/CSS is in root, or point to _site, dist, etc.
+          github_token: ${{ secrets.PAT_TOKEN }}
+          publish_dir: ./  # change this if your site files are in a subfolder
