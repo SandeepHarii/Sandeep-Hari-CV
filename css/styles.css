@@ -401,3 +401,13 @@ body { background: radial-gradient(ellipse at 90% 0%, #0b3150 0%, var(--navy-950
     grid-template-columns: 1fr;
   }
 }
+
+/* Shared personal brand: GitHub profile and portfolio */
+:root { --brand-ink: #06111f; --brand-navy: #0b2540; --brand-blue: #008ed6; --brand-cyan: #22b8ff; --brand-white: #f4f8fc; }
+.sidebar h1 { color: var(--brand-cyan); }
+.portfolio-intro { background: linear-gradient(120deg, var(--brand-ink) 0%, var(--brand-navy) 67%, #0b4163 100%); border-color: var(--brand-blue); }
+.portfolio-intro .eyebrow { color: var(--brand-cyan); }
+#projects .project-grid .project-card { display: flex; flex-direction: column; gap: 10px; }
+#projects .project-grid .project-card p, #projects .project-grid .project-card h3 { margin-bottom: 0; }
+#projects .project-grid .project-card .button { align-self: flex-start; margin-top: auto; }
+@media (max-width: 768px) { #projects .project-grid .project-card .button { width: 100%; text-align: center; } }
