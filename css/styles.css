@@ -411,3 +411,23 @@ body { background: radial-gradient(ellipse at 90% 0%, #0b3150 0%, var(--navy-950
 #projects .project-grid .project-card p, #projects .project-grid .project-card h3 { margin-bottom: 0; }
 #projects .project-grid .project-card .button { align-self: flex-start; margin-top: auto; }
 @media (max-width: 768px) { #projects .project-grid .project-card .button { width: 100%; text-align: center; } }
+
+/* Original LinkedIn banner, shared across portfolio and GitHub */
+.brand-banner {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #17638b;
+  border-radius: 12px;
+  background: #06111f;
+  margin: 20px 0 12px;
+}
+.brand-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.brand-banner + .portfolio-intro { margin-top: 0; }
+@media (max-width: 768px) {
+  .brand-banner { border-radius: 8px; margin-top: 12px; }
+}
