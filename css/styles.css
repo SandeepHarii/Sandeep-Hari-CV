@@ -301,3 +301,52 @@ main.open {
 .email-button:hover {
     background-color: #2980b9; /* Slightly darker accent color */
 }
+
+/* LinkedIn banner-inspired FinTrust portfolio palette */
+:root {
+  --navy-950: #06111f;
+  --navy-900: #091a2b;
+  --navy-800: #0b2540;
+  --cyan-500: #22b8ff;
+  --blue-600: #008ed6;
+  --text-main: #f4f8fc;
+  --text-muted: #b9ccdb;
+}
+body { background: radial-gradient(ellipse at 90% 0%, #0b3150 0%, var(--navy-950) 48%); color: var(--text-main); }
+.sidebar { background: #071726; border-right: 1px solid #164565; z-index: 1000; }
+.sidebar h1, .card-section h2, .card-header { color: var(--cyan-500); }
+.sidebar nav ul li a:hover, .sidebar nav ul li a:focus-visible { color: var(--cyan-500); }
+.card-section { background: #0b2033; border: 1px solid #173a55; box-shadow: 0 10px 26px rgba(0,0,0,.22); }
+.card { background: #091929; border: 1px solid #1a3c55; }
+.card p, p, ul, li { color: var(--text-muted); }
+.card h3, h1, h2, h3 { color: var(--text-main); }
+.card a:not(.button) { color: #75d6ff; overflow-wrap: anywhere; }
+.card a:not(.button):hover { text-decoration: underline; }
+.button { background: var(--blue-600); color: #fff; display: inline-block; text-decoration: none; }
+.button:hover { background: #0879b3; }
+.button:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid #75d6ff; outline-offset: 3px; }
+.burger-menu { background: #071726; }
+.featured-project { width: 100%; padding: 28px; margin-bottom: 24px; border-color: #1682b8; background: linear-gradient(135deg,#0c2d48,#091929 75%); }
+.featured-project h3 { font-size: 1.45rem; color: #f4f8fc; }
+.featured-project p { max-width: 78ch; margin: 10px 0; }
+.featured-project .eyebrow { display: inline-block; font-size: .72rem; letter-spacing: .13em; font-weight: 700; color: #75d6ff; margin-bottom: 10px; }
+.featured-project .project-note { font-size: .9rem; color: #a6c0d2; }
+@media (max-width: 1023px) {
+ .sidebar { left: -250px; }
+ .sidebar.open { left: 0; }
+ main { margin-left: 0; }
+ .burger-menu { display: block; position: sticky; top: 0; z-index: 900; }
+}
+@media (min-width: 1024px) {
+ .sidebar { left: 0; }
+ .burger-menu { display: none; }
+}
+@media (max-width: 768px) {
+ .featured-project { padding: 20px; }
+ #projects .card-container { grid-template-columns: minmax(0,1fr); }
+ .card-section { padding: 16px; }
+ main { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
