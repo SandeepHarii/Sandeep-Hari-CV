@@ -350,3 +350,36 @@ body { background: radial-gradient(ellipse at 90% 0%, #0b3150 0%, var(--navy-950
 @media (prefers-reduced-motion: reduce) {
  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Dedicated certifications and connected portfolio navigation */
+.portfolio-intro {
+  background: linear-gradient(120deg, #0c304c, #071827 70%);
+  border: 1px solid #17638b;
+  border-radius: 12px;
+  padding: clamp(22px, 4vw, 44px);
+  margin: 20px 0 28px;
+}
+.portfolio-intro .eyebrow, .certification-card .eyebrow {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #75d6ff;
+  margin-bottom: 12px;
+}
+.portfolio-intro h2 {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.18;
+  color: #f4f8fc;
+  margin-bottom: 12px;
+}
+.portfolio-intro p { max-width: 65ch; }
+.quick-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.button-outline { background: transparent; border: 1px solid #2b98c9; color: #b9eaff; }
+.button-outline:hover { background: #103d5c; }
+#certifications .certification-card { width: min(100%, 580px); }
+#certifications .certification-card h3 { line-height: 1.35; }
+#certifications .certification-card a { color: #75d6ff; }
+@media (max-width: 768px) {
+  .quick-links .button { width: 100%; text-align: center; }
+}
